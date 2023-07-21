@@ -12,7 +12,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
+
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -67,9 +67,9 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need node package manager<br>
-
-
- npm install 
+- Node.js
+- Vscode
+- Current Web Browser
 
 
 ### Setup
@@ -85,9 +85,7 @@ Clone this repository to your desired folder:
 ### Install
 
 Install this project with:<br>
-  npx create-react-app my-app
-  cd my-app
-  npm start
+  `npm install`
 
 
 ### Usage
@@ -112,7 +110,7 @@ You can deploy this project using github page deployment.
 
 - GitHub: [@tajulafreen](https://github.com/tajulafreen)
 - Twitter: [@tajulafreen](https://twitter.com/tajulafreen)
-- LinkedIn: [@tajul-afreen-shaik-843951251](https://www.linkedin.com/in/tajul-afreen-shaik-843951251/)
+- LinkedIn: [@tajul-afreen-shaik-843951251](https://www.linkedin.com/in/tajul-afreen-843951251/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
