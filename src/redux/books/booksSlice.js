@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const bookSlice = createSlice({
   name: 'books',
-  initialState: [],
+  initialState: { Books: [] },
   reducers: {
     addBook: (state, action) => {
       state.push(action.payload);
