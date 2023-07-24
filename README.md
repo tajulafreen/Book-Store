@@ -31,7 +31,7 @@
 
 # 📖 [Book-Store] <a name="about-project"></a>
 
-> [Math-Magicians-app]
+> [Book - Store]
 
 **[BookStore]** Bookstore is a comprehensive web application built using React and Redux, designed to provide an efficient and user-friendly platform for managing and browsing books. With a sleek and intuitive interface, this application allows users to easily add, remove, and explore an extensive collection of books.
 
