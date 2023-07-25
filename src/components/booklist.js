@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
 import Book from './book';
+import Input from './input';
 
 const Booklist = () => {
   const books = useSelector((state) => state.books);
@@ -12,11 +13,12 @@ const Booklist = () => {
   };
 
   return (
-    <div>
+    <>
       {books.map((book) => (
         <Book key={book.id} book={book} deleteBook={deleteHandler} />
       ))}
-    </div>
+      <Input />
+    </>
   );
 };
 
