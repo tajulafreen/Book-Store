@@ -1,65 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/NWL6J2bcQLwcLHk7uDm7/books';
 
-export const fetchBooks = createAsyncThunk(
-  'books/fetchBooks',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios(baseURL);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('Request failed');
-    }
-  },
-);
-export const addBook = createAsyncThunk(
-  'addBooks/addBook',
-  async (book, thunkAPI) => {
-    try {
-      const newBook = {
-        itemId: uuidv4(),
+const initialState = {
+  books: [],
+  isLoading: false,
+};
 
-      };
-      const response = await axios.post(baseURL, book, newBook);
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  try {
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch books');
+  }
+});
 
-      if (response.status === 201) {
-        thunkAPI.dispatch(fetchBooks());
-        return null;
-      }
-      return null;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('Post request failed');
-    }
-  },
-);
+export const addBook = createAsyncThunk('books/addBook', async (newBook) => {
+  try {
+    await axios.post(baseURL, newBook);
+  } catch (error) {
+    console.error('Error posting book:', error.response.data);
+    throw error;
+  }
+});
 
-export const removeBook = createAsyncThunk(
-  'books/removeBook',
-  async (itemId, thunkAPI) => {
-    try {
-      const response = await axios.delete(`${baseURL}/${itemId}`);
-
-      if (response.status === 201) {
-        thunkAPI.dispatch(fetchBooks());
-        return null;
-      }
-      return null;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('Could not delete book');
-    }
-  },
-);
+export const removeBook = createAsyncThunk('books/removeBook', async (item_id) => {
+  try {
+    await axios.delete(`${baseURL}/${item_id}`);
+  } catch (error) {
+    console.error('Error removing book:', error);
+    throw error;
+  }
+});
 
 const booksSlice = createSlice({
   name: 'books',
-  initialState: {
-    books: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -67,39 +45,36 @@ const booksSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.books = Object.keys(action.payload).map((id) => ({
-          id,
-          ...action.payload[id],
+        const booksData = action.payload;
+        const booksArray = Object.keys(booksData).map((item_id) => ({
+          item_id,
+          ...booksData[item_id][0],
         }));
+        state.isLoading = false;
+        state.books = booksArray;
       })
       .addCase(fetchBooks.rejected, (state) => {
         state.isLoading = false;
-        state.error = true;
       })
       .addCase(addBook.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(addBook.fulfilled, (state, action) => {
-        state.isLoading = true;
-        state.books = Object.keys(action.payload).map((id) => ({
-          id,
-          ...action.payload[id],
-        }));
+      .addCase(addBook.fulfilled, (state) => {
+        state.isLoading = false;
       })
       .addCase(addBook.rejected, (state) => {
         state.isLoading = false;
-        state.error = true;
       })
       .addCase(removeBook.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(removeBook.fulfilled, (state) => {
-        state.isLoading = true;
+      .addCase(removeBook.fulfilled, (state, action) => {
+        const item_idToRemove = action.payload;
+        state.isLoading = false;
+        state.books = state.books.filter((book) => book.item_id !== item_idToRemove);
       })
       .addCase(removeBook.rejected, (state) => {
         state.isLoading = false;
-        state.error = true;
       });
   },
 });

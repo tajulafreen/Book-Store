@@ -18,7 +18,7 @@ function Book({ book, deleteBook }) {
           <p>Category:</p>
           {book.category}
         </div>
-        <button type="button" onClick={() => deleteBook(book.id)}>
+        <button type="button" onClick={() => deleteBook(book.item_id)}>
           Delete Book
         </button>
       </li>
@@ -28,7 +28,7 @@ function Book({ book, deleteBook }) {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    item_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,

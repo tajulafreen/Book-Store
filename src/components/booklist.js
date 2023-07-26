@@ -6,42 +6,20 @@ import Input from './input';
 
 const Booklist = () => {
   const books = useSelector((state) => state.books.books);
-  const isLoading = useSelector((state) => state.books.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
-  const deleteHandler = async (id) => {
-    try {
-      await dispatch(removeBook(id));
-      dispatch(fetchBooks());
-      return id;
-    } catch (error) {
-      return error;
-    }
+  const deleteHandler = (item_id) => {
+    dispatch(removeBook(item_id));
   };
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!Array.isArray(books)) {
-    return <p>No books available.</p>;
-  }
 
   return (
     <>
       {books.map((book) => (
-        <div key={book.id}>
-          <Book
-            key={book.id}
-            title={book.title}
-            author={book.author}
-            category={book.category}
-            deleteBook={deleteHandler}
-          />
-        </div>
+        <Book key={book.item_id} book={book} deleteBook={() => deleteHandler(book.item_id)} />
       ))}
       <Input />
     </>

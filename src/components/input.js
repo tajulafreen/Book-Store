@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import { addBook, fetchBooks } from '../redux/books/booksSlice';
+import { v4 as uuidv4 } from 'uuid';
+import { addBook } from '../redux/books/booksSlice';
 
 const Input = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const dispatch = useDispatch();
-  const submitHandler = async () => {
+
+  const submitHandler = (e) => {
+    e.preventDefault();
     if (!title || !author || !category) {
       setErrorMessage('Please fill in all the fields before adding the book.');
 
       return;
     }
-
-    try {
-      await dispatch(addBook({ title, author, category }));
-      setTitle('');
-      setAuthor('');
-      setCategory('');
-      setErrorMessage('');
-      await dispatch(fetchBooks());
-    } catch (error) {
-      setErrorMessage('Error adding book. Please try again later.');
-    }
+    const newBook = {
+      item_id: uuidv4(),
+      title,
+      author,
+      category,
+    };
+    dispatch(addBook(newBook));
+    setTitle('');
+    setAuthor('');
+    setCategory('');
   };
 
   return (
