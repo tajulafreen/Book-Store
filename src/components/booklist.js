@@ -5,7 +5,7 @@ import Book from './book';
 import Input from './input';
 
 const Booklist = () => {
-  const books = useSelector((state) => state.books);
+  const books = useSelector((state) => state.books.books);
   const isLoading = useSelector((state) => state.books.isLoading);
   const dispatch = useDispatch();
 

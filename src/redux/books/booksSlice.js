@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/NWL6J2bcQLwcLHk7uDm7/books';
 
@@ -18,7 +19,11 @@ export const addBook = createAsyncThunk(
   'addBooks/addBook',
   async (book, thunkAPI) => {
     try {
-      const response = await axios.post(baseURL, book);
+      const newBook = {
+        itemId: uuidv4(),
+
+      };
+      const response = await axios.post(baseURL, book, newBook);
 
       if (response.status === 201) {
         thunkAPI.dispatch(fetchBooks());
@@ -63,7 +68,10 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.books = action.payload;
+        state.books = Object.keys(action.payload).map((id) => ({
+          id,
+          ...action.payload[id],
+        }));
       })
       .addCase(fetchBooks.rejected, (state) => {
         state.isLoading = false;
@@ -72,8 +80,12 @@ const booksSlice = createSlice({
       .addCase(addBook.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(addBook.fulfilled, (state) => {
+      .addCase(addBook.fulfilled, (state, action) => {
         state.isLoading = true;
+        state.books = Object.keys(action.payload).map((id) => ({
+          id,
+          ...action.payload[id],
+        }));
       })
       .addCase(addBook.rejected, (state) => {
         state.isLoading = false;

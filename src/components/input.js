@@ -13,8 +13,10 @@ const Input = () => {
   const submitHandler = async () => {
     if (!title || !author || !category) {
       setErrorMessage('Please fill in all the fields before adding the book.');
+
       return;
     }
+
     try {
       await dispatch(addBook({ title, author, category }));
       setTitle('');
