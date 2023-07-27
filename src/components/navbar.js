@@ -6,8 +6,14 @@ const Navbar = () => (
     <header>
       <h1>Bookstore</h1>
       <nav>
-        <Link to="/">Books</Link>
-        <Link to="categories">Categories</Link>
+        <ul>
+          <li>
+            <Link to="/">Books</Link>
+          </li>
+          <li>
+            <Link to="categories">Categories</Link>
+          </li>
+        </ul>
       </nav>
     </header>
   </div>
