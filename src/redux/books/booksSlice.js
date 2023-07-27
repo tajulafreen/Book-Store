@@ -20,6 +20,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 export const addBook = createAsyncThunk('books/addBook', async (newBook) => {
   try {
     await axios.post(baseURL, newBook);
+    return newBook;
   } catch (error) {
     console.error('Error posting book:', error.response.data);
     throw error;
@@ -29,6 +30,7 @@ export const addBook = createAsyncThunk('books/addBook', async (newBook) => {
 export const removeBook = createAsyncThunk('books/removeBook', async (item_id) => {
   try {
     await axios.delete(`${baseURL}/${item_id}`);
+    return item_id;
   } catch (error) {
     console.error('Error removing book:', error);
     throw error;
@@ -59,8 +61,10 @@ const booksSlice = createSlice({
       .addCase(addBook.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(addBook.fulfilled, (state) => {
+      .addCase(addBook.fulfilled, (state, action) => {
         state.isLoading = false;
+        const newBook = action.payload;
+        state.books.push(newBook);
       })
       .addCase(addBook.rejected, (state) => {
         state.isLoading = false;
