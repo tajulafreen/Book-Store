@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
+import './styles/input.css';
 
 const Input = () => {
   const [title, setTitle] = useState('');
@@ -30,14 +31,15 @@ const Input = () => {
   };
 
   return (
-    <div className="form-container">
+    <div>
+      <div className="horizontal-divider" />
       <h2>Add New Book</h2>
-      <form>
-        <input type="text" placeholder="Book title" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" placeholder="Book author" id="author" value={author} onChange={(e) => setAuthor(e.target.value)} />
-        <input type="text" placeholder="Book category" id="category" value={category} onChange={(e) => setCategory(e.target.value)} />
+      <form className="add-form">
+        <input className="input title-input" type="text" placeholder="Book title" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input className="input" type="text" placeholder="Book author" id="author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <input className="input" type="text" placeholder="Book category" id="category" value={category} onChange={(e) => setCategory(e.target.value)} />
         {errorMessage && <div className="text-danger error-message">{errorMessage}</div>}
-        <button type="submit" id="add-new-book" onClick={submitHandler}>ADD BOOK</button>
+        <button className="primary-button-big" type="submit" id="add-new-book" onClick={submitHandler}>ADD BOOK</button>
       </form>
     </div>
   );

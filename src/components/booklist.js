@@ -17,12 +17,12 @@ const Booklist = () => {
   };
 
   return (
-    <>
+    <div className="container">
       {books.map((book) => (
         <Book key={book.item_id} book={book} deleteBook={() => deleteHandler(book.item_id)} />
       ))}
       <Input />
-    </>
+    </div>
   );
 };
 
