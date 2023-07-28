@@ -110,7 +110,7 @@ You can deploy this project using github page deployment.
 
 - GitHub: [@tajulafreen](https://github.com/tajulafreen)
 - Twitter: [@tajulafreen](https://twitter.com/tajulafreen)
-- LinkedIn: [@tajul-afreen-shaik-843951251](https://www.linkedin.com/in/tajul-afreen-843951251/)
+- LinkedIn: [@tajul-afreen-843951251](https://www.linkedin.com/in/tajul-afreen-843951251/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
