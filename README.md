@@ -31,9 +31,9 @@
 
 # 📖 [Book-Store] <a name="about-project"></a>
 
-> [Book Store]
+> [Book - Store]
 
-**[Book Store]** is React app that adds and removes books from the list.
+**[BookStore]** Bookstore is a comprehensive web application built using React and Redux, designed to provide an efficient and user-friendly platform for managing and browsing books. With a sleek and intuitive interface, this application allows users to easily add, remove, and explore an extensive collection of books.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -98,7 +98,7 @@ To run the project, execute the following command:<br>
 
 ### Deployment
 
-You can deploy this project using github page deployment.
+You can deploy this project using GitHub page deployment.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -110,7 +110,7 @@ You can deploy this project using github page deployment.
 
 - GitHub: [@tajulafreen](https://github.com/tajulafreen)
 - Twitter: [@tajulafreen](https://twitter.com/tajulafreen)
-- LinkedIn: [@tajul-afreen-843951251](https://www.linkedin.com/in/tajul-afreen-843951251/)
+- LinkedIn: [@tajulafreen](https://www.linkedin.com/in/tajul-afreen-843951251/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
