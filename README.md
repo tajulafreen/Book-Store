@@ -31,9 +31,9 @@
 
 # 📖 [Book-Store] <a name="about-project"></a>
 
-> [Math-Magicians-app]
+> [Book Store]
 
-**[Math Magicians app]** is React app that adds and removes books from the list.
+**[Book Store]** is React app that adds and removes books from the list.
 
 ## 🛠 Built With <a name="built-with"></a>
 
