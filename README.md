@@ -99,6 +99,14 @@ To run the project, execute the following command:<br>
   `npm start`
 
 
+### Build
+
+To build the project, run the following command:
+
+```bash
+npm run build
+```
+
 ### Deployment
 
 You can deploy this project using GitHub page deployment.
