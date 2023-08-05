@@ -12,7 +12,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-
+     - [Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -39,23 +39,22 @@
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> HTML
-> CSS 
-> Javascript
-> React
-
-
+- HTML
+- CSS 
+- Javascript
+- React
+- Redux
 
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
-
-- **[Book-Store]**
-
-- coming soon
+- Adding book
+- Removing book
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Demo Link <a name="live-demo"></a>
 
 <!-- GETTING STARTED -->
 
@@ -71,6 +70,10 @@ In order to run this project you need node package manager<br>
 - Vscode
 - Current Web Browser
 
+
+### Run-Test <a name="run-tests"></a>
+In order to run the test you need to run the command:
+`npm run test`
 
 ### Setup
 
@@ -93,7 +96,7 @@ Install this project with:<br>
 To run the project, execute the following command:<br>
 
 
-  npm start
+  `npm start`
 
 
 ### Deployment
@@ -119,7 +122,8 @@ You can deploy this project using GitHub page deployment.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[maths calculator]**
+- [ search bar]
+- [ audio]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,7 +151,7 @@ If you like this project give me star
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 
-I would like to thank my Microverse codding partners
+I would like to thank my Microverse.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
